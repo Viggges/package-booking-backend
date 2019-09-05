@@ -2,6 +2,7 @@ package tws.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,19 +16,23 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/employees")
+
 public class EmployeeController {
 
     @Autowired
     private EmployeeMapper employeeMapper;
 
     @GetMapping("")
+    @CrossOrigin
     public ResponseEntity<List<Employee>> getAll() {
         return ResponseEntity.ok(employeeMapper.selectAll());
     }
 
     @PostMapping("")
+    @CrossOrigin
     public ResponseEntity<Employee> insert(@RequestBody Employee employee) {
         employeeMapper.insert(employee);
+        System.out.println("========================================dyr");
         return ResponseEntity.created(URI.create("/employees/" + employee.getId())).body(employee);
     }
 }

@@ -1,5 +1,8 @@
-CREATE TABLE employee (
-  id INTEGER PRIMARY KEY,
-  name VARCHAR(64) NOT NULL,
-  age   int(4) NOT NULL
+CREATE TABLE package_info (
+trackNum VARCHAR(64)PRIMARY KEY,
+addressee VARCHAR(64),
+phoneNum VARCHAR(64),
+weight INTEGER,
+status  VARCHAR(64),
+bookings VARCHAR(64),
 );
